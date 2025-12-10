@@ -5,9 +5,12 @@ import Card from '../components/common/Card';
 
 // 목업 데이터
 const buildData = [
-  { id: '1', projectName: 'MD Series', status: 'success' as const, buildNumber: '#142', startedAt: '2025-12-10 14:00', duration: '15분', errorLog: null },
-  { id: '2', projectName: 'MDRED', status: 'success' as const, buildNumber: '#98', startedAt: '2025-12-10 13:30', duration: '12분', errorLog: null },
-  { id: '3', projectName: 'Face Search', status: 'failure' as const, buildNumber: '#67', startedAt: '2025-12-10 14:20', duration: '8분', errorLog: `Error: Module not found 'xyz'\nat line 142, file: src/main.cpp\nBuild failed with exit code 1` },
+  { id: '1', projectName: 'MD-RED', status: 'success' as const, buildNumber: '#245', startedAt: '2025-12-10 14:00', duration: '15분', errorLog: null },
+  { id: '2', projectName: 'MD-NEXT', status: 'success' as const, buildNumber: '#189', startedAt: '2025-12-10 13:30', duration: '18분', errorLog: null },
+  { id: '3', projectName: 'MD-LIVE', status: 'failure' as const, buildNumber: '#112', startedAt: '2025-12-10 14:20', duration: '8분', errorLog: `Error: Module not found 'xyz'\nat line 142, file: src/main.cpp\nBuild failed with exit code 1` },
+  { id: '4', projectName: 'MD-MEDIA', status: 'success' as const, buildNumber: '#87', startedAt: '2025-12-10 12:00', duration: '22분', errorLog: null },
+  { id: '5', projectName: 'MD-DRONE', status: 'success' as const, buildNumber: '#156', startedAt: '2025-12-10 11:30', duration: '12분', errorLog: null },
+  { id: '6', projectName: 'MD-PCM', status: 'success' as const, buildNumber: '#203', startedAt: '2025-12-10 10:00', duration: '10분', errorLog: null },
 ];
 
 const StatusIcon = ({ status }: { status: 'success' | 'failure' | 'running' }) => {

@@ -6,34 +6,20 @@ import StatusBadge from '../components/common/StatusBadge';
 
 // 목업 데이터
 const projectSummary = [
-  {
-    id: '1',
-    name: 'MD Series',
-    packaging: { status: 'in_progress', phase: '2차' },
-    build: 'success',
-    issues: 3,
-  },
-  {
-    id: '2',
-    name: 'MDRED',
-    packaging: { status: 'deployed', phase: null },
-    build: 'success',
-    issues: 1,
-  },
-  {
-    id: '3',
-    name: 'Face Search',
-    packaging: { status: 'in_progress', phase: '1차' },
-    build: 'failure',
-    issues: 5,
-  },
+  { id: '1', name: 'MD-RED', packaging: { status: 'deployed', phase: null }, build: 'success', issues: 2 },
+  { id: '2', name: 'MD-NEXT', packaging: { status: 'in_progress', phase: '2차' }, build: 'success', issues: 4 },
+  { id: '3', name: 'MD-LIVE', packaging: { status: 'in_progress', phase: '1차' }, build: 'failure', issues: 3 },
+  { id: '4', name: 'MD-MEDIA', packaging: { status: 'deployed', phase: null }, build: 'success', issues: 1 },
+  { id: '5', name: 'MD-DRONE', packaging: { status: 'in_progress', phase: '3차' }, build: 'success', issues: 5 },
+  { id: '6', name: 'MD-PCM', packaging: { status: 'deployed', phase: null }, build: 'success', issues: 0 },
 ];
 
 const recentActivities = [
-  { id: 1, message: 'MD Series 2차 패키징 진행 중 - 특이사항 있음', time: '10분 전', type: 'warning' },
-  { id: 2, message: 'Face Search 빌드 실패', time: '30분 전', type: 'error' },
-  { id: 3, message: 'MDRED 배포 완료', time: '1시간 전', type: 'success' },
-  { id: 4, message: 'MD-123 이슈 생성됨', time: '2시간 전', type: 'info' },
+  { id: 1, message: 'MD-NEXT 2차 패키징 진행 중 - QA 이슈 발견', time: '10분 전', type: 'warning' },
+  { id: 2, message: 'MD-LIVE 빌드 실패', time: '30분 전', type: 'error' },
+  { id: 3, message: 'MD-RED 배포 완료', time: '1시간 전', type: 'success' },
+  { id: 4, message: 'MD-DRONE r1542 커밋', time: '2시간 전', type: 'info' },
+  { id: 5, message: 'MD-PCM 배포 완료', time: '3시간 전', type: 'success' },
 ];
 
 const Dashboard = () => {
@@ -50,25 +36,25 @@ const Dashboard = () => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6">
           <StatCard
             title="패키징 현황"
-            value="2/3"
+            value="3/6"
             icon={<Package size={24} />}
             color="blue"
           />
           <StatCard
             title="빌드 성공률"
-            value="67%"
+            value="83%"
             icon={<Hammer size={24} />}
             color="green"
           />
           <StatCard
             title="진행 중 이슈"
-            value="9"
+            value="15"
             icon={<AlertCircle size={24} />}
             color="yellow"
           />
           <StatCard
             title="금주 커밋"
-            value="47"
+            value="127"
             icon={<GitCommit size={24} />}
             color="gray"
           />

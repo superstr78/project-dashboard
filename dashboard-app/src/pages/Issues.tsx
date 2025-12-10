@@ -6,17 +6,22 @@ import StatusBadge from '../components/common/StatusBadge';
 // 목업 데이터
 const projects = [
   { id: 'all', name: '전체' },
-  { id: 'md-series', name: 'MD Series' },
-  { id: 'mdred', name: 'MDRED' },
-  { id: 'face-search', name: 'Face Search' },
+  { id: 'md-red', name: 'MD-RED' },
+  { id: 'md-next', name: 'MD-NEXT' },
+  { id: 'md-live', name: 'MD-LIVE' },
+  { id: 'md-media', name: 'MD-MEDIA' },
+  { id: 'md-drone', name: 'MD-DRONE' },
+  { id: 'md-pcm', name: 'MD-PCM' },
 ];
 
 const issuesData = [
-  { id: '1', title: '로그인 오류 발생', status: 'in_progress', assignee: '김개발', createdAt: '2025-12-09', projectId: 'md-series' },
-  { id: '2', title: 'UI 깨짐 현상', status: 'resolved', assignee: '이디자인', createdAt: '2025-12-08', projectId: 'md-series' },
-  { id: '3', title: '성능 저하 이슈', status: 'in_progress', assignee: '박성능', createdAt: '2025-12-07', projectId: 'mdred' },
-  { id: '4', title: '데이터 동기화 문제', status: 'open', assignee: '최백엔드', createdAt: '2025-12-10', projectId: 'face-search' },
-  { id: '5', title: '메모리 누수 발생', status: 'in_progress', assignee: '김개발', createdAt: '2025-12-09', projectId: 'face-search' },
+  { id: '1', title: '로그인 오류 발생', status: 'in_progress', assignee: '김개발', createdAt: '2025-12-09', projectId: 'md-red' },
+  { id: '2', title: 'UI 깨짐 현상', status: 'resolved', assignee: '이디자인', createdAt: '2025-12-08', projectId: 'md-red' },
+  { id: '3', title: '성능 저하 이슈', status: 'in_progress', assignee: '박성능', createdAt: '2025-12-07', projectId: 'md-next' },
+  { id: '4', title: '데이터 동기화 문제', status: 'open', assignee: '최백엔드', createdAt: '2025-12-10', projectId: 'md-live' },
+  { id: '5', title: '메모리 누수 발생', status: 'in_progress', assignee: '김개발', createdAt: '2025-12-09', projectId: 'md-drone' },
+  { id: '6', title: '영상 인코딩 오류', status: 'open', assignee: '정미디어', createdAt: '2025-12-10', projectId: 'md-media' },
+  { id: '7', title: '드론 연결 불안정', status: 'in_progress', assignee: '한드론', createdAt: '2025-12-09', projectId: 'md-drone' },
 ];
 
 const getStatusBadge = (status: string) => {

@@ -4,17 +4,21 @@ import Card from '../components/common/Card';
 
 // 목업 데이터
 const svnStats = [
-  { projectName: 'MD Series', commitCount: 45, percentage: 45 },
-  { projectName: 'MDRED', commitCount: 30, percentage: 30 },
-  { projectName: 'Face Search', commitCount: 25, percentage: 25 },
+  { projectName: 'MD-RED', commitCount: 32, percentage: 25 },
+  { projectName: 'MD-NEXT', commitCount: 28, percentage: 22 },
+  { projectName: 'MD-LIVE', commitCount: 18, percentage: 14 },
+  { projectName: 'MD-MEDIA', commitCount: 22, percentage: 17 },
+  { projectName: 'MD-DRONE', commitCount: 15, percentage: 12 },
+  { projectName: 'MD-PCM', commitCount: 12, percentage: 10 },
 ];
 
 const recentCommits = [
-  { revision: 'r1234', project: 'MD Series', message: '버그 수정', author: '홍길동', time: '1시간 전' },
-  { revision: 'r1233', project: 'MDRED', message: '기능 추가', author: '김개발', time: '2시간 전' },
-  { revision: 'r1232', project: 'Face Search', message: '성능 개선', author: '이성능', time: '3시간 전' },
-  { revision: 'r1231', project: 'MD Series', message: 'UI 수정', author: '박디자인', time: '4시간 전' },
-  { revision: 'r1230', project: 'MDRED', message: '테스트 추가', author: '최테스트', time: '5시간 전' },
+  { revision: 'r1542', project: 'MD-DRONE', message: '드론 연결 안정화', author: '한드론', time: '1시간 전' },
+  { revision: 'r1541', project: 'MD-RED', message: '버그 수정', author: '홍길동', time: '2시간 전' },
+  { revision: 'r1540', project: 'MD-NEXT', message: '기능 추가', author: '김개발', time: '3시간 전' },
+  { revision: 'r1539', project: 'MD-MEDIA', message: '인코딩 최적화', author: '정미디어', time: '4시간 전' },
+  { revision: 'r1538', project: 'MD-LIVE', message: '성능 개선', author: '이성능', time: '5시간 전' },
+  { revision: 'r1537', project: 'MD-PCM', message: '테스트 추가', author: '최테스트', time: '6시간 전' },
 ];
 
 const periods = [

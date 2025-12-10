@@ -5,18 +5,23 @@ import StatusBadge from '../components/common/StatusBadge';
 
 // 목업 데이터
 const jiraIssues = [
-  { key: 'MD-123', summary: '로그인 기능 개선', status: '진행 중', assignee: '홍길동', created: '2025-12-10', priority: 'High' },
-  { key: 'MD-122', summary: '대시보드 UI 수정', status: '완료', assignee: '김개발', created: '2025-12-09', priority: 'Medium' },
-  { key: 'MR-456', summary: 'API 응답 속도 개선', status: '진행 중', assignee: '이성능', created: '2025-12-09', priority: 'High' },
-  { key: 'FS-789', summary: '얼굴 인식 정확도 향상', status: '대기', assignee: '박개발', created: '2025-12-08', priority: 'Critical' },
-  { key: 'MD-121', summary: '버그: 데이터 누락', status: '완료', assignee: '최테스트', created: '2025-12-07', priority: 'High' },
+  { key: 'RED-123', summary: '로그인 기능 개선', status: '진행 중', assignee: '홍길동', created: '2025-12-10', priority: 'High' },
+  { key: 'RED-122', summary: '대시보드 UI 수정', status: '완료', assignee: '김개발', created: '2025-12-09', priority: 'Medium' },
+  { key: 'NEXT-456', summary: 'API 응답 속도 개선', status: '진행 중', assignee: '이성능', created: '2025-12-09', priority: 'High' },
+  { key: 'LIVE-789', summary: '스트리밍 안정화', status: '대기', assignee: '박개발', created: '2025-12-08', priority: 'Critical' },
+  { key: 'MEDIA-101', summary: '인코딩 품질 향상', status: '진행 중', assignee: '정미디어', created: '2025-12-10', priority: 'High' },
+  { key: 'DRONE-202', summary: '드론 연결 프로토콜 개선', status: '완료', assignee: '한드론', created: '2025-12-07', priority: 'High' },
+  { key: 'PCM-303', summary: '데이터 파싱 최적화', status: '완료', assignee: '최테스트', created: '2025-12-06', priority: 'Medium' },
 ];
 
 const projects = [
   { value: 'all', label: '전체' },
-  { value: 'MD', label: 'MD Series' },
-  { value: 'MR', label: 'MDRED' },
-  { value: 'FS', label: 'Face Search' },
+  { value: 'RED', label: 'MD-RED' },
+  { value: 'NEXT', label: 'MD-NEXT' },
+  { value: 'LIVE', label: 'MD-LIVE' },
+  { value: 'MEDIA', label: 'MD-MEDIA' },
+  { value: 'DRONE', label: 'MD-DRONE' },
+  { value: 'PCM', label: 'MD-PCM' },
 ];
 
 const statuses = [

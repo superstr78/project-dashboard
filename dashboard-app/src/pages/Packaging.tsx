@@ -6,34 +6,32 @@ import StatusBadge from '../components/common/StatusBadge';
 // 목업 데이터
 const packagingData = [
   {
-    id: '1',
-    projectName: 'MD Series',
-    status: 'in_progress' as const,
-    phase: '2차',
-    note: 'QA 이슈 3건 발견, 수정 중',
-    updatedAt: '2025-12-10 14:30',
+    id: '1', projectName: 'MD-RED', status: 'deployed' as const, phase: null, note: null,
+    updatedAt: '2025-12-10 10:00', comments: [],
+  },
+  {
+    id: '2', projectName: 'MD-NEXT', status: 'in_progress' as const, phase: '2차',
+    note: 'QA 이슈 3건 발견, 수정 중', updatedAt: '2025-12-10 14:30',
     comments: [
       { author: '홍길동', content: 'QA에서 이슈 3건 발견, 수정 중', time: '14:30' },
       { author: '김개발', content: '1건 수정 완료', time: '15:00' },
     ],
   },
   {
-    id: '2',
-    projectName: 'MDRED',
-    status: 'deployed' as const,
-    phase: null,
-    note: null,
-    updatedAt: '2025-12-10 10:00',
-    comments: [],
+    id: '3', projectName: 'MD-LIVE', status: 'in_progress' as const, phase: '1차',
+    note: '빌드 오류 수정 중', updatedAt: '2025-12-10 09:00', comments: [],
   },
   {
-    id: '3',
-    projectName: 'Face Search',
-    status: 'in_progress' as const,
-    phase: '1차',
-    note: null,
-    updatedAt: '2025-12-10 09:00',
-    comments: [],
+    id: '4', projectName: 'MD-MEDIA', status: 'deployed' as const, phase: null, note: null,
+    updatedAt: '2025-12-09 16:00', comments: [],
+  },
+  {
+    id: '5', projectName: 'MD-DRONE', status: 'in_progress' as const, phase: '3차',
+    note: '최종 검증 중', updatedAt: '2025-12-10 11:00', comments: [],
+  },
+  {
+    id: '6', projectName: 'MD-PCM', status: 'deployed' as const, phase: null, note: null,
+    updatedAt: '2025-12-08 14:00', comments: [],
   },
 ];
 
