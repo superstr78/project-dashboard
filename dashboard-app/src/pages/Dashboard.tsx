@@ -4,7 +4,7 @@ import Card from '../components/common/Card';
 import StatCard from '../components/common/StatCard';
 import StatusBadge from '../components/common/StatusBadge';
 
-// 임시 데이터
+// 목업 데이터
 const projectSummary = [
   {
     id: '1',
@@ -45,9 +45,9 @@ const Dashboard = () => {
     <div>
       <Header title="대시보드" onRefresh={handleRefresh} />
 
-      <div className="p-6">
+      <div className="p-4 sm:p-6">
         {/* 통계 카드 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6">
           <StatCard
             title="패키징 현황"
             value="2/3"
@@ -76,16 +76,16 @@ const Dashboard = () => {
 
         {/* 프로젝트별 요약 */}
         <Card title="프로젝트별 현황" className="mb-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {projectSummary.map((project) => (
               <div
                 key={project.id}
-                className="border rounded-lg p-4 hover:shadow-md transition-shadow"
+                className="bg-slate-700/50 border border-slate-600 rounded-lg p-4 hover:bg-slate-700 transition-colors"
               >
-                <h4 className="font-semibold text-gray-800 mb-3">{project.name}</h4>
+                <h4 className="font-semibold text-white mb-3">{project.name}</h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-500">패키징</span>
+                    <span className="text-slate-400">패키징</span>
                     <StatusBadge
                       status={project.packaging.status === 'deployed' ? 'success' : 'warning'}
                       label={
@@ -96,15 +96,15 @@ const Dashboard = () => {
                     />
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-500">빌드</span>
+                    <span className="text-slate-400">빌드</span>
                     <StatusBadge
                       status={project.build === 'success' ? 'success' : 'error'}
                       label={project.build === 'success' ? '성공' : '실패'}
                     />
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-500">이슈</span>
-                    <span className="font-medium">{project.issues}건</span>
+                    <span className="text-slate-400">이슈</span>
+                    <span className="font-medium text-white">{project.issues}건</span>
                   </div>
                 </div>
               </div>
@@ -118,11 +118,11 @@ const Dashboard = () => {
             {recentActivities.map((activity) => (
               <div
                 key={activity.id}
-                className="flex items-center justify-between py-2 border-b last:border-0"
+                className="flex items-center justify-between py-2 border-b border-slate-700 last:border-0"
               >
                 <div className="flex items-center gap-3">
                   <div
-                    className={`w-2 h-2 rounded-full ${
+                    className={`w-2 h-2 rounded-full flex-shrink-0 ${
                       activity.type === 'success'
                         ? 'bg-green-500'
                         : activity.type === 'error'
@@ -132,9 +132,9 @@ const Dashboard = () => {
                         : 'bg-blue-500'
                     }`}
                   />
-                  <span className="text-gray-700">{activity.message}</span>
+                  <span className="text-slate-300 text-sm sm:text-base">{activity.message}</span>
                 </div>
-                <span className="text-sm text-gray-400">{activity.time}</span>
+                <span className="text-xs sm:text-sm text-slate-500 whitespace-nowrap ml-2">{activity.time}</span>
               </div>
             ))}
           </div>

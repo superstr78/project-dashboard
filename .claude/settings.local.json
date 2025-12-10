@@ -12,7 +12,11 @@
       "Bash(curl:*)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: GMDSOFT 프로젝트 대시보드 초기 구현\n\n- React + Vite + TypeScript + Tailwind CSS 프로젝트 설정\n- 7개 페이지 구현 (대시보드, 패키징, 이슈, 빌드, SVN, Jira, 설정)\n- 공통 컴포넌트 (Card, StatCard, StatusBadge)\n- 사이드바 레이아웃 및 라우팅 설정\n- 요구사항.md, 지침.md 문서 작성\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n)\")"
+      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: GMDSOFT 프로젝트 대시보드 초기 구현\n\n- React + Vite + TypeScript + Tailwind CSS 프로젝트 설정\n- 7개 페이지 구현 (대시보드, 패키징, 이슈, 빌드, SVN, Jira, 설정)\n- 공통 컴포넌트 (Card, StatCard, StatusBadge)\n- 사이드바 레이아웃 및 라우팅 설정\n- 요구사항.md, 지침.md 문서 작성\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)"
     ]
   }
 }

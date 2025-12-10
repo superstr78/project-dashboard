@@ -21,15 +21,15 @@ const colorStyles = {
 
 const StatCard = ({ title, value, icon, trend, color = 'blue' }: StatCardProps) => {
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6">
+    <div className="bg-slate-800 rounded-lg border border-slate-700 p-4 sm:p-6">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm font-medium text-gray-500">{title}</p>
-          <p className="text-3xl font-bold text-gray-800 mt-1">{value}</p>
+          <p className="text-sm font-medium text-slate-400">{title}</p>
+          <p className="text-2xl sm:text-3xl font-bold text-white mt-1">{value}</p>
           {trend && (
             <p
               className={`text-sm mt-2 ${
-                trend.isPositive ? 'text-green-600' : 'text-red-600'
+                trend.isPositive ? 'text-green-400' : 'text-red-400'
               }`}
             >
               {trend.isPositive ? '↑' : '↓'} {Math.abs(trend.value)}%

@@ -3,7 +3,7 @@ import Header from '../components/layout/Header';
 import Card from '../components/common/Card';
 import StatusBadge from '../components/common/StatusBadge';
 
-// 임시 데이터
+// 목업 데이터
 const jiraIssues = [
   { key: 'MD-123', summary: '로그인 기능 개선', status: '진행 중', assignee: '홍길동', created: '2025-12-10', priority: 'High' },
   { key: 'MD-122', summary: '대시보드 UI 수정', status: '완료', assignee: '김개발', created: '2025-12-09', priority: 'Medium' },
@@ -34,10 +34,10 @@ const getStatusType = (status: string) => {
 };
 
 const getPriorityColor = (priority: string) => {
-  if (priority === 'Critical') return 'text-red-600';
-  if (priority === 'High') return 'text-orange-500';
-  if (priority === 'Medium') return 'text-yellow-600';
-  return 'text-gray-500';
+  if (priority === 'Critical') return 'text-red-400';
+  if (priority === 'High') return 'text-orange-400';
+  if (priority === 'Medium') return 'text-yellow-400';
+  return 'text-slate-400';
 };
 
 const Jira = () => {
@@ -60,15 +60,15 @@ const Jira = () => {
     <div>
       <Header title="Jira 이슈 현황" onRefresh={handleRefresh} />
 
-      <div className="p-6">
+      <div className="p-4 sm:p-6">
         {/* 필터 */}
         <div className="flex flex-wrap gap-4 mb-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">프로젝트</label>
+            <label className="block text-sm font-medium text-slate-400 mb-1">프로젝트</label>
             <select
               value={projectFilter}
               onChange={(e) => setProjectFilter(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="px-4 py-2 bg-slate-700 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-blue-500"
             >
               {projects.map((p) => (
                 <option key={p.value} value={p.value}>{p.label}</option>
@@ -76,11 +76,11 @@ const Jira = () => {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">상태</label>
+            <label className="block text-sm font-medium text-slate-400 mb-1">상태</label>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="px-4 py-2 bg-slate-700 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-blue-500"
             >
               {statuses.map((s) => (
                 <option key={s.value} value={s.value}>{s.label}</option>
@@ -94,7 +94,7 @@ const Jira = () => {
           <button
             onClick={() => setTab('recent')}
             className={`px-4 py-2 rounded-lg text-sm font-medium ${
-              tab === 'recent' ? 'bg-blue-500 text-white' : 'bg-white text-gray-600 hover:bg-gray-50'
+              tab === 'recent' ? 'bg-blue-600 text-white' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
             }`}
           >
             최근 생성
@@ -102,7 +102,7 @@ const Jira = () => {
           <button
             onClick={() => setTab('completed')}
             className={`px-4 py-2 rounded-lg text-sm font-medium ${
-              tab === 'completed' ? 'bg-blue-500 text-white' : 'bg-white text-gray-600 hover:bg-gray-50'
+              tab === 'completed' ? 'bg-blue-600 text-white' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
             }`}
           >
             최근 완료
@@ -111,39 +111,41 @@ const Jira = () => {
 
         {/* 테이블 */}
         <Card>
-          <table className="w-full">
-            <thead>
-              <tr className="border-b">
-                <th className="text-left py-3 px-4 font-medium text-gray-500">이슈 키</th>
-                <th className="text-left py-3 px-4 font-medium text-gray-500">제목</th>
-                <th className="text-left py-3 px-4 font-medium text-gray-500">상태</th>
-                <th className="text-left py-3 px-4 font-medium text-gray-500">담당자</th>
-                <th className="text-left py-3 px-4 font-medium text-gray-500">우선순위</th>
-                <th className="text-left py-3 px-4 font-medium text-gray-500">생성일</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredIssues.map((issue) => (
-                <tr key={issue.key} className="border-b hover:bg-gray-50">
-                  <td className="py-3 px-4">
-                    <span className="font-mono text-blue-600">{issue.key}</span>
-                  </td>
-                  <td className="py-3 px-4 font-medium">{issue.summary}</td>
-                  <td className="py-3 px-4">
-                    <StatusBadge status={getStatusType(issue.status)} label={issue.status} />
-                  </td>
-                  <td className="py-3 px-4 text-gray-600">{issue.assignee}</td>
-                  <td className={`py-3 px-4 font-medium ${getPriorityColor(issue.priority)}`}>
-                    {issue.priority}
-                  </td>
-                  <td className="py-3 px-4 text-gray-500">{issue.created}</td>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[500px]">
+              <thead>
+                <tr className="border-b border-slate-700">
+                  <th className="text-left py-3 px-4 font-medium text-slate-400">이슈 키</th>
+                  <th className="text-left py-3 px-4 font-medium text-slate-400">제목</th>
+                  <th className="text-left py-3 px-4 font-medium text-slate-400">상태</th>
+                  <th className="text-left py-3 px-4 font-medium text-slate-400 hidden sm:table-cell">담당자</th>
+                  <th className="text-left py-3 px-4 font-medium text-slate-400 hidden md:table-cell">우선순위</th>
+                  <th className="text-left py-3 px-4 font-medium text-slate-400 hidden lg:table-cell">생성일</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {filteredIssues.map((issue) => (
+                  <tr key={issue.key} className="border-b border-slate-700 hover:bg-slate-700/50">
+                    <td className="py-3 px-4">
+                      <span className="font-mono text-blue-400">{issue.key}</span>
+                    </td>
+                    <td className="py-3 px-4 font-medium text-white">{issue.summary}</td>
+                    <td className="py-3 px-4">
+                      <StatusBadge status={getStatusType(issue.status)} label={issue.status} />
+                    </td>
+                    <td className="py-3 px-4 text-slate-400 hidden sm:table-cell">{issue.assignee}</td>
+                    <td className={`py-3 px-4 font-medium hidden md:table-cell ${getPriorityColor(issue.priority)}`}>
+                      {issue.priority}
+                    </td>
+                    <td className="py-3 px-4 text-slate-500 hidden lg:table-cell">{issue.created}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
           {filteredIssues.length === 0 && (
-            <div className="text-center py-8 text-gray-500">이슈가 없습니다</div>
+            <div className="text-center py-8 text-slate-500">이슈가 없습니다</div>
           )}
         </Card>
       </div>

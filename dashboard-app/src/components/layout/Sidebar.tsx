@@ -7,6 +7,7 @@ import {
   GitCommit,
   Ticket,
   Settings,
+  X,
 } from 'lucide-react';
 
 const menuItems = [
@@ -18,13 +19,27 @@ const menuItems = [
   { path: '/jira', icon: Ticket, label: 'Jira' },
 ];
 
-const Sidebar = () => {
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+const Sidebar = ({ onClose }: SidebarProps) => {
   return (
     <aside className="w-64 bg-slate-800 text-white min-h-screen flex flex-col">
       {/* 로고/타이틀 */}
-      <div className="p-4 border-b border-slate-700">
-        <h1 className="text-xl font-bold">GMDSOFT</h1>
-        <p className="text-sm text-slate-400">프로젝트 대시보드</p>
+      <div className="p-4 border-b border-slate-700 flex items-center justify-between">
+        <div>
+          <h1 className="text-xl font-bold">GMDSOFT</h1>
+          <p className="text-sm text-slate-400">프로젝트 대시보드</p>
+        </div>
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="lg:hidden p-2 text-slate-400 hover:text-white"
+          >
+            <X size={20} />
+          </button>
+        )}
       </div>
 
       {/* 메뉴 */}
@@ -34,6 +49,7 @@ const Sidebar = () => {
             <li key={item.path}>
               <NavLink
                 to={item.path}
+                onClick={onClose}
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                     isActive
@@ -53,6 +69,7 @@ const Sidebar = () => {
         <div className="mt-8 pt-4 border-t border-slate-700">
           <NavLink
             to="/settings"
+            onClick={onClose}
             className={({ isActive }) =>
               `flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                 isActive

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Header from '../components/layout/Header';
 import Card from '../components/common/Card';
 
-// 임시 데이터
+// 목업 데이터
 const svnStats = [
   { projectName: 'MD Series', commitCount: 45, percentage: 45 },
   { projectName: 'MDRED', commitCount: 30, percentage: 30 },
@@ -34,16 +34,16 @@ const SvnCommits = () => {
     <div>
       <Header title="SVN 커밋 현황" onRefresh={handleRefresh} />
 
-      <div className="p-6">
+      <div className="p-4 sm:p-6">
         {/* 기간 선택 */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-slate-400 mb-2">
             기간 선택
           </label>
           <select
             value={period}
             onChange={(e) => setPeriod(e.target.value)}
-            className="w-full md:w-48 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+            className="w-full sm:w-48 px-4 py-2 bg-slate-700 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-blue-500"
           >
             {periods.map((p) => (
               <option key={p.value} value={p.value}>{p.label}</option>
@@ -58,10 +58,10 @@ const SvnCommits = () => {
               {svnStats.map((stat) => (
                 <div key={stat.projectName}>
                   <div className="flex justify-between text-sm mb-1">
-                    <span className="font-medium">{stat.projectName}</span>
-                    <span className="text-gray-500">{stat.commitCount}건 ({stat.percentage}%)</span>
+                    <span className="font-medium text-white">{stat.projectName}</span>
+                    <span className="text-slate-400">{stat.commitCount}건 ({stat.percentage}%)</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3">
+                  <div className="w-full bg-slate-700 rounded-full h-3">
                     <div
                       className="bg-blue-500 h-3 rounded-full transition-all"
                       style={{ width: `${stat.percentage}%` }}
@@ -71,9 +71,9 @@ const SvnCommits = () => {
               ))}
             </div>
 
-            <div className="mt-6 pt-4 border-t">
-              <p className="text-sm text-gray-500">
-                총 커밋: <span className="font-medium text-gray-800">100건</span>
+            <div className="mt-6 pt-4 border-t border-slate-700">
+              <p className="text-sm text-slate-400">
+                총 커밋: <span className="font-medium text-white">100건</span>
               </p>
             </div>
           </Card>
@@ -84,17 +84,17 @@ const SvnCommits = () => {
               {recentCommits.map((commit) => (
                 <div
                   key={commit.revision}
-                  className="flex items-start justify-between py-2 border-b last:border-0"
+                  className="flex items-start justify-between py-2 border-b border-slate-700 last:border-0"
                 >
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-mono text-blue-600">{commit.revision}</span>
-                      <span className="text-xs bg-gray-100 px-2 py-0.5 rounded">{commit.project}</span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-sm font-mono text-blue-400">{commit.revision}</span>
+                      <span className="text-xs bg-slate-700 text-slate-300 px-2 py-0.5 rounded">{commit.project}</span>
                     </div>
-                    <p className="text-sm text-gray-700 mt-1">{commit.message}</p>
-                    <p className="text-xs text-gray-400 mt-1">{commit.author}</p>
+                    <p className="text-sm text-slate-300 mt-1 truncate">{commit.message}</p>
+                    <p className="text-xs text-slate-500 mt-1">{commit.author}</p>
                   </div>
-                  <span className="text-xs text-gray-400 whitespace-nowrap">{commit.time}</span>
+                  <span className="text-xs text-slate-500 whitespace-nowrap ml-2">{commit.time}</span>
                 </div>
               ))}
             </div>
