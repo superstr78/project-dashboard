@@ -64,21 +64,35 @@ const Dashboard = () => {
       <Header title="대시보드" onRefresh={handleRefresh} />
 
       <div className="p-4 sm:p-6">
-        {/* 패키징 진행 중 */}
-        <Card title={`패키징 진행 중 (${inProgressProjects.length})`} className="mb-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {inProgressProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
+        {/* 프로젝트 현황 */}
+        <Card title="프로젝트 현황" className="mb-6">
+          {/* 패키징 진행 중 */}
+          <div className="mb-6">
+            <h4 className="text-sm font-medium text-yellow-400 mb-3 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
+              패키징 진행 중 ({inProgressProjects.length})
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {inProgressProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
           </div>
-        </Card>
 
-        {/* 배포 완료 */}
-        <Card title={`배포 완료 (${deployedProjects.length})`} className="mb-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {deployedProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
+          {/* 구분선 */}
+          <div className="border-t border-slate-700 my-6"></div>
+
+          {/* 배포 완료 */}
+          <div>
+            <h4 className="text-sm font-medium text-green-400 mb-3 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-green-400"></span>
+              배포 완료 ({deployedProjects.length})
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {deployedProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
           </div>
         </Card>
 
