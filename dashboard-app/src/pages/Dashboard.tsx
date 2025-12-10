@@ -1,7 +1,5 @@
-import { Package, Hammer, AlertCircle, GitCommit } from 'lucide-react';
 import Header from '../components/layout/Header';
 import Card from '../components/common/Card';
-import StatCard from '../components/common/StatCard';
 import StatusBadge from '../components/common/StatusBadge';
 
 // 목업 데이터
@@ -27,73 +25,59 @@ const Dashboard = () => {
     console.log('Refreshing dashboard...');
   };
 
+  // 패키징 진행 중 / 배포 완료 그룹 분리
+  const inProgressProjects = projectSummary.filter(p => p.packaging.status === 'in_progress');
+  const deployedProjects = projectSummary.filter(p => p.packaging.status === 'deployed');
+
+  const ProjectCard = ({ project }: { project: typeof projectSummary[0] }) => (
+    <div className="bg-slate-700/50 border border-slate-600 rounded-lg p-4 hover:bg-slate-700 transition-colors">
+      <h4 className="font-semibold text-white mb-3">{project.name}</h4>
+      <div className="space-y-2 text-sm">
+        <div className="flex justify-between items-center">
+          <span className="text-slate-400">패키징</span>
+          <StatusBadge
+            status={project.packaging.status === 'deployed' ? 'success' : 'warning'}
+            label={
+              project.packaging.status === 'deployed'
+                ? '배포완료'
+                : `진행중 (${project.packaging.phase})`
+            }
+          />
+        </div>
+        <div className="flex justify-between items-center">
+          <span className="text-slate-400">빌드</span>
+          <StatusBadge
+            status={project.build === 'success' ? 'success' : 'error'}
+            label={project.build === 'success' ? '성공' : '실패'}
+          />
+        </div>
+        <div className="flex justify-between items-center">
+          <span className="text-slate-400">이슈</span>
+          <span className="font-medium text-white">{project.issues}건</span>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div>
       <Header title="대시보드" onRefresh={handleRefresh} />
 
       <div className="p-4 sm:p-6">
-        {/* 통계 카드 */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6">
-          <StatCard
-            title="패키징 현황"
-            value="3/6"
-            icon={<Package size={24} />}
-            color="blue"
-          />
-          <StatCard
-            title="빌드 성공률"
-            value="83%"
-            icon={<Hammer size={24} />}
-            color="green"
-          />
-          <StatCard
-            title="진행 중 이슈"
-            value="15"
-            icon={<AlertCircle size={24} />}
-            color="yellow"
-          />
-          <StatCard
-            title="금주 커밋"
-            value="127"
-            icon={<GitCommit size={24} />}
-            color="gray"
-          />
-        </div>
-
-        {/* 프로젝트별 요약 */}
-        <Card title="프로젝트별 현황" className="mb-6">
+        {/* 패키징 진행 중 */}
+        <Card title={`패키징 진행 중 (${inProgressProjects.length})`} className="mb-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {projectSummary.map((project) => (
-              <div
-                key={project.id}
-                className="bg-slate-700/50 border border-slate-600 rounded-lg p-4 hover:bg-slate-700 transition-colors"
-              >
-                <h4 className="font-semibold text-white mb-3">{project.name}</h4>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-400">패키징</span>
-                    <StatusBadge
-                      status={project.packaging.status === 'deployed' ? 'success' : 'warning'}
-                      label={
-                        project.packaging.status === 'deployed'
-                          ? '배포완료'
-                          : `진행중 (${project.packaging.phase})`
-                      }
-                    />
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-400">빌드</span>
-                    <StatusBadge
-                      status={project.build === 'success' ? 'success' : 'error'}
-                      label={project.build === 'success' ? '성공' : '실패'}
-                    />
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-400">이슈</span>
-                    <span className="font-medium text-white">{project.issues}건</span>
-                  </div>
-                </div>
-              </div>
+            {inProgressProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </Card>
+
+        {/* 배포 완료 */}
+        <Card title={`배포 완료 (${deployedProjects.length})`} className="mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {deployedProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         </Card>
